@@ -5,4 +5,5 @@ const pathnameExist = (pathname: string): boolean => {
   return isValid ? true : false;
 };
 
+
 export { pathnameExist };

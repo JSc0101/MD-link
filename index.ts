@@ -1,5 +1,12 @@
-const mdLink = (path: string, options: string) => {
-  return new Promise(() => {});
-};
+import { pathnameExist } from "./validator";
 
-module.exports = {};
+export const mdLink = (path: string, options: string) => {
+  return new Promise((resolve, reject) => {
+    if (options === undefined) {
+      reject("error ruta undefined");
+    } else {
+      pathnameExist(path);
+      resolve("is valid");
+    }
+  });
+};
