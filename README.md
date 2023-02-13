@@ -1,5 +1,5 @@
 ## MD Link
 
 ````
-npm i ? --save-dev
+npm i mdLink --save-dev
 ````
