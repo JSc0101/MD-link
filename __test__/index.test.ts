@@ -1,10 +1,10 @@
-import { pathnameExist } from "../validator";
+import { pathnameExist, validatorAbslute } from "../validator";
 
-const pathFalsy: string = "C:UsersNICOLASDocumentsFundamentos-NEXT.jsREADME.md";
+const pathFalsy: string = "css/README.md";
 const pathTruthy: string =
   "C:/Users/NICOLAS/Desktop/MD-Link/__test__/files/helloWorld.md";
 
-describe("function test pathnameExist", () => {
+describe("the  pathname function test", () => {
   test("should be a function", () => {
     expect(typeof pathnameExist).toBe("function");
   });
@@ -16,4 +16,18 @@ describe("function test pathnameExist", () => {
   test("should be a true", () => {
     expect(pathnameExist(pathTruthy)).toBeTruthy();
   });
+});
+
+describe("the  isAbsolute function test", () => {
+  test("should be a function", () => {
+    expect(typeof validatorAbslute).toBe("function");
+  });
+
+  test("should be a false", () => {
+    expect(validatorAbslute(pathFalsy)).toBeFalsy();
+  });
+
+  test('should be a true', () => {
+    expect(validatorAbslute(pathTruthy)).toBeTruthy()
+  })
 });
