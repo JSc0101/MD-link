@@ -17,7 +17,7 @@ const pathnameExist = (pathname: string): boolean => {
  * @param pathname es la ruta
  * @returns validar si la ruta es absoluta
  */
-const validatorAbslute = (pathname: string): boolean => {
+const validatorAbsolute = (pathname: string): boolean => {
   const absolute = isAbsolute(pathname);
   return absolute ? true : false;
 };
@@ -32,4 +32,4 @@ const converToAbsolute = (pathname: string):string => {
  return resolve(CWD, pathname)
 
 };
-export { pathnameExist, validatorAbslute , converToAbsolute};
+export { pathnameExist, validatorAbsolute , converToAbsolute};

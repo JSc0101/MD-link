@@ -1,6 +1,6 @@
 import {
   pathnameExist,
-  validatorAbslute,
+  validatorAbsolute,
   converToAbsolute,
 } from "../validator";
 
@@ -25,15 +25,15 @@ describe("the  pathname function test", () => {
 
 describe("the  isAbsolute function test", () => {
   test("should be a function", () => {
-    expect(typeof validatorAbslute).toBe("function");
+    expect(typeof validatorAbsolute).toBe("function");
   });
 
   test("should be a false", () => {
-    expect(validatorAbslute(pathFalsy)).toBeFalsy();
+    expect(validatorAbsolute(pathFalsy)).toBeFalsy();
   });
 
   test("should be a true", () => {
-    expect(validatorAbslute(pathTruthy)).toBeTruthy();
+    expect(validatorAbsolute(pathTruthy)).toBeTruthy();
   });
 });
 
