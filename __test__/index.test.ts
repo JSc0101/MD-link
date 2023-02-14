@@ -1,8 +1,13 @@
-import { pathnameExist, validatorAbslute } from "../validator";
+import {
+  pathnameExist,
+  validatorAbslute,
+  converToAbsolute,
+} from "../validator";
 
 const pathFalsy: string = "css/README.md";
 const pathTruthy: string =
   "C:/Users/NICOLAS/Desktop/MD-Link/__test__/files/helloWorld.md";
+const pathRelative = "__test__/files/others/testing.md";
 
 describe("the  pathname function test", () => {
   test("should be a function", () => {
@@ -27,7 +32,19 @@ describe("the  isAbsolute function test", () => {
     expect(validatorAbslute(pathFalsy)).toBeFalsy();
   });
 
-  test('should be a true', () => {
-    expect(validatorAbslute(pathTruthy)).toBeTruthy()
-  })
+  test("should be a true", () => {
+    expect(validatorAbslute(pathTruthy)).toBeTruthy();
+  });
+});
+
+describe("the converToAbsolute function test", () => {
+  test("should be a function", () => {
+    expect(typeof converToAbsolute).toEqual("function");
+  });
+
+  test("should return an path absolute", () => {
+    expect(converToAbsolute(pathRelative)).toContain(
+      "C:\\Users\\NICOLAS\\Desktop\\MD-Link\\__test__\\files\\others\\testing.md"
+    );
+  });
 });
