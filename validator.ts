@@ -1,6 +1,6 @@
-import { existsSync } from "fs";
+import { existsSync, statSync } from "fs";
 import { isAbsolute, resolve } from "path";
-import {cwd} from "process";
+import { cwd } from "process";
 
 /**
  *
@@ -27,9 +27,14 @@ const validatorAbsolute = (pathname: string): boolean => {
  * @param pathname es la ruta relativa
  * @returns retorna una ruta absoluta
  */
-const converToAbsolute = (pathname: string):string => {
- const CWD =  cwd()
- return resolve(CWD, pathname)
-
+const converToAbsolute = (pathname: string): string => {
+  const CWD = cwd();
+  return resolve(CWD, pathname);
 };
-export { pathnameExist, validatorAbsolute , converToAbsolute};
+
+const isAdirectory = (pathname: string) => {
+  const state = statSync(pathname);
+  return state.isDirectory() ? true : false;
+};
+
+export { pathnameExist, validatorAbsolute, converToAbsolute, isAdirectory };
