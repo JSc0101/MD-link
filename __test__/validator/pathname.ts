@@ -4,5 +4,5 @@ const pathTruthy: string =
 
 const pathRelative = "__test__/files/others/testing.md";
 const directory = "C:/Users/NICOLAS/Desktop/MD-Link/__test__/files";
-
-export { pathFalsy, pathTruthy, pathRelative, directory };
+const readFiles = "C:/Users/NICOLAS/Desktop/MD-Link/__test__/files/others";
+export { pathFalsy, pathTruthy, pathRelative, directory, readFiles };

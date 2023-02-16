@@ -1,4 +1,4 @@
-import { existsSync, statSync } from "fs";
+import { existsSync, statSync, readdirSync } from "fs";
 import { isAbsolute, resolve } from "path";
 import { cwd } from "process";
 
@@ -37,4 +37,15 @@ const isAdirectory = (pathname: string) => {
   return state.isDirectory() ? true : false;
 };
 
-export { pathnameExist, validatorAbsolute, converToAbsolute, isAdirectory };
+const readFolder = (pathname: string) => {
+  const files = readdirSync(pathname);
+  return files;
+};
+
+export {
+  pathnameExist,
+  validatorAbsolute,
+  converToAbsolute,
+  isAdirectory,
+  readFolder,
+};
