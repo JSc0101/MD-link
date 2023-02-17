@@ -1,5 +1,5 @@
 import { existsSync, statSync, readdirSync } from "fs";
-import { isAbsolute, resolve } from "path";
+import { isAbsolute, resolve , extname} from "path";
 import { cwd } from "process";
 
 /**
@@ -42,10 +42,16 @@ const readFolder = (pathname: string) => {
   return files;
 };
 
+const isValidMD = (pathname: string) => {
+  return extname(pathname) === '.md' ? true : false
+}
+
+
 export {
   pathnameExist,
   validatorAbsolute,
   converToAbsolute,
   isAdirectory,
   readFolder,
+  isValidMD
 };
