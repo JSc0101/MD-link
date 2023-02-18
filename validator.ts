@@ -1,5 +1,5 @@
 import { existsSync, statSync, readdirSync } from "fs";
-import { isAbsolute, resolve , extname} from "path";
+import { isAbsolute, resolve, extname } from "path";
 import { cwd } from "process";
 
 /**
@@ -43,9 +43,22 @@ const readFolder = (pathname: string) => {
 };
 
 const isValidMD = (pathname: string) => {
-  return extname(pathname) === '.md' ? true : false
-}
+  return extname(pathname) === ".md" ? true : false;
+};
 
+const getMdFiles = (pathname: string) => {
+  let mdArray: Array<string> = [];
+
+  if (isValidMD(pathname)) {
+    mdArray.push(pathname);
+  } else if (isAdirectory(pathname)) {
+    const content = readFolder(pathname);
+    content.map(
+      (item) => (mdArray = mdArray.concat(getMdFiles(`${pathname}/${item}`)))
+    );
+  }
+  return mdArray;
+};
 
 export {
   pathnameExist,
@@ -53,5 +66,5 @@ export {
   converToAbsolute,
   isAdirectory,
   readFolder,
-  isValidMD
+  isValidMD,
 };
