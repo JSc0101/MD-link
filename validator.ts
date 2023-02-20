@@ -67,4 +67,5 @@ export {
   isAdirectory,
   readFolder,
   isValidMD,
+  getMdFiles
 };
