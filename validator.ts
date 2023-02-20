@@ -1,4 +1,4 @@
-import { existsSync, statSync, readdirSync } from "fs";
+import { existsSync, statSync, readdirSync, readFile } from "fs";
 import { isAbsolute, resolve, extname } from "path";
 import { cwd } from "process";
 
@@ -60,6 +60,14 @@ const getMdFiles = (pathname: string) => {
   return mdArray;
 };
 
+const pathReadFiles = (pathname: string) => {
+  return new Promise((resolve, reject) => {
+    readFile(pathname, "utf-8", (error, files) => {
+      error ? reject(error) : resolve(files);
+    });
+  });
+};
+
 export {
   pathnameExist,
   validatorAbsolute,
@@ -67,5 +75,6 @@ export {
   isAdirectory,
   readFolder,
   isValidMD,
-  getMdFiles
+  getMdFiles,
+  pathReadFiles
 };
