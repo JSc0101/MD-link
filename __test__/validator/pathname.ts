@@ -20,6 +20,10 @@ const mdArr = [
 
 const pathEmpty =
   "C:/Users/NICOLAS/Desktop/MD-Link/__test__/files/others/markdown/security/manager";
+
+const readFilePath =
+  "C:/Users/NICOLAS/Desktop/MD-Link/__test__/files/helloWorld.md";
+
 export {
   pathFalsy,
   pathTruthy,
@@ -28,5 +32,6 @@ export {
   readFiles,
   pathConcurrent,
   mdArr,
-  pathEmpty
+  pathEmpty,
+  readFilePath,
 };
