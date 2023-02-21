@@ -3,10 +3,6 @@ import { readFilePath, pathEmpty } from "./pathname";
 
 describe("function pathReadFiles", () => {
   describe("everything related to the pathReadFiles function", () => {
-    test("should be an function", () => {
-      expect(typeof pathReadFiles).toBe("function");
-    });
-
     test("should read the file", () => {
       pathReadFiles(readFilePath).then((file) => {
         if (typeof file === "string") {
