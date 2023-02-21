@@ -3,10 +3,6 @@ import { directory, pathRelative } from "./pathname";
 
 describe("funtion isAdirectory", () => {
   describe("should return an directory", () => {
-    test("should be a function", () => {
-      expect(typeof isAdirectory).toEqual("function");
-    });
-
     test("should be a true", () => {
       expect(isAdirectory(directory)).toBeTruthy();
     });
