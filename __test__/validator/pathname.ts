@@ -24,14 +24,27 @@ const pathEmpty =
 const readFilePath =
   "C:/Users/NICOLAS/Desktop/MD-Link/__test__/files/helloWorld.md";
 
+const pathArrMd =
+  "C:/Users/NICOLAS/Desktop/MD-Link/__test__/files/others/markdown/python.md";
+
+  const arrFilemd = [
+    {
+      href: "https://i.postimg.cc/d3Dfb5nF/python.jpg",
+      text: "python",
+      file: "C:/Users/NICOLAS/Desktop/MD-Link/__test__/files/others/markdown/python.md",
+    },
+  ];
+
 export {
   pathFalsy,
   pathTruthy,
   pathRelative,
   directory,
   readFiles,
+  arrFilemd,
   pathConcurrent,
   mdArr,
   pathEmpty,
   readFilePath,
+  pathArrMd
 };

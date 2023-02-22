@@ -68,6 +68,33 @@ const pathReadFiles = (pathname: string) => {
   });
 };
 
+const validatePath = (pathname: string) => {
+  return new Promise((resolve, reject) => {
+    const pathResult: Array<object> = [];
+    pathReadFiles(pathname)
+      .then((data) => {
+        let RegExpValidate =
+          /\[([\w\s\d]+)\]\(((?:\/|https?:\/\/)[\w\d./?=#]+[a-zA-Z0-9!-_$]+)\)/gi;
+
+        if (typeof data === "string") {
+          let matchPath = RegExpValidate.exec(data);
+
+          while (matchPath !== null) {
+            pathResult.push({
+              href: matchPath[2],
+              text: matchPath[1],
+              file: pathname,
+            });
+            matchPath = RegExpValidate.exec(data);
+          }
+        }
+        resolve(pathResult);
+      })
+      .catch((error) => reject(error));
+  });
+};
+
+
 export {
   pathnameExist,
   validatorAbsolute,
@@ -76,5 +103,6 @@ export {
   readFolder,
   isValidMD,
   getMdFiles,
-  pathReadFiles
+  pathReadFiles,
+  validatePath
 };
