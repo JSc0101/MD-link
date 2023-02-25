@@ -98,16 +98,16 @@ const validatePath = (pathname: string) => {
 
 const validateLinks = (objectArray: Array<LINK>) => {
   return Promise.all(
-    objectArray.map((object: LINK) =>
+    objectArray.map((object) =>
       axios
         .get(object.href)
         .then((res) => {
           const objectWithFiveprops = {
             ...object,
             status: res.status,
-            OK: res.statusText ? res.statusText : "fail",
+            OK: res.statusText !== "OK" ? "fail" : res.statusText,
           };
-          return objectWithFiveprops
+          return objectWithFiveprops;
         })
         .catch((error) => error)
     )
@@ -125,5 +125,5 @@ export {
   getMdFiles,
   pathReadFiles,
   validatePath,
-  validateLinks
+  validateLinks,
 };
