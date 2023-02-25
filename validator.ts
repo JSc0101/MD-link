@@ -1,6 +1,8 @@
 import { existsSync, statSync, readdirSync, readFile } from "fs";
 import { isAbsolute, resolve, extname } from "path";
+import { LINK } from "./interfaces/objectLink";
 import { cwd } from "process";
+import axios from "axios";
 
 /**
  *
@@ -34,7 +36,7 @@ const converToAbsolute = (pathname: string): string => {
 
 const isAdirectory = (pathname: string) => {
   const state = statSync(pathname);
-  return state.isDirectory() ? true : false;
+  return state.isDirectory();
 };
 
 const readFolder = (pathname: string) => {
@@ -94,6 +96,24 @@ const validatePath = (pathname: string) => {
   });
 };
 
+const validateLinks = (objectArray: Array<LINK>) => {
+  return Promise.all(
+    objectArray.map((object: LINK) =>
+      axios
+        .get(object.href)
+        .then((res) => {
+          const objectWithFiveprops = {
+            ...object,
+            status: res.status,
+            OK: res.statusText ? res.statusText : "fail",
+          };
+          return objectWithFiveprops
+        })
+        .catch((error) => error)
+    )
+  );
+};
+
 
 export {
   pathnameExist,
@@ -104,5 +124,6 @@ export {
   isValidMD,
   getMdFiles,
   pathReadFiles,
-  validatePath
+  validatePath,
+  validateLinks
 };
