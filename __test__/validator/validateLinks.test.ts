@@ -21,9 +21,13 @@ describe("function validate", () => {
         OK: "OK",
       };
       const arrayObject: Array<LINK> = [resolveObject];
-      mockedAxios.get.mockResolvedValue(resolveObject);
+      mockedAxios.get.mockResolvedValue({ status: 200, statusText: "OK" });
       validateLinks(arrayObject).then((result) => {
         expect(result).toBeInstanceOf(Array);
+        result.forEach((element) => {
+          expect(element.OK).toBe('OK')
+          expect(element.status).not.toBe(404)
+        })
       });
     });
 
