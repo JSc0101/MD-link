@@ -44,6 +44,11 @@ const readFolder = (pathname: string) => {
   return files;
 };
 
+/**
+ *
+ * @param pathname | recibe la ruta conn archivos MD
+ * @returns return el archivo MD
+ */
 const isValidMD = (pathname: string) => {
   return extname(pathname) === ".md" ? true : false;
 };
@@ -113,6 +118,7 @@ const validateLinks = (objectArray: Array<LINK>) => {
     )
   );
 };
+
 
 
 export {
