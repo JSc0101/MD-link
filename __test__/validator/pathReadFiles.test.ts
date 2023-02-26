@@ -9,7 +9,6 @@ describe("pathReadFiles", () => {
     const testFileContent = "Test file content";
     const testFilePath = "./testFile.txt";
 
-    // Write test file
     require("fs").writeFileSync(testFilePath, testFileContent);
 
     return pathReadFiles(testFilePath)
@@ -17,7 +16,6 @@ describe("pathReadFiles", () => {
         expect(content).toEqual(testFileContent);
       })
       .finally(() => {
-        // Delete test file
         require("fs").unlinkSync(testFilePath);
       });
   });

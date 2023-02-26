@@ -34,11 +34,21 @@ const converToAbsolute = (pathname: string): string => {
   return resolve(CWD, pathname);
 };
 
+/**
+ *
+ * @param pathname recibe el directorio
+ * @returns retorna un boolean
+ */
 const isAdirectory = (pathname: string) => {
   const state = statSync(pathname);
   return state.isDirectory();
 };
 
+/**
+ *
+ * @param pathname recibe el direcctorio a leer
+ * @returns retorna los archivos del directorio en forma de array
+ */
 const readFolder = (pathname: string) => {
   const files = readdirSync(pathname);
   return files;
@@ -69,9 +79,9 @@ const getMdFiles = (pathname: string) => {
 
 const pathReadFiles = (pathname: string) => {
   return new Promise((resolve, reject) => {
-    readFile(pathname, "utf-8", (error, files) => {
-      error ? reject(error) : resolve(files);
-    });
+    readFile(pathname, "utf-8", (error, files) =>
+      error ? reject(error) : resolve(files)
+    );
   });
 };
 
@@ -119,7 +129,15 @@ const validateLinks = (objectArray: Array<LINK>) => {
   );
 };
 
+const statsUnique = (objectArray: Array<LINK>) => {
+  const resultHref = objectArray.map((link) => link.href);
+  const notHrefRepeat = new Set(resultHref);
 
+  return {
+    totalFiles: resultHref.length,
+    totalUnique: notHrefRepeat.size,
+  };
+};
 
 export {
   pathnameExist,
@@ -132,4 +150,5 @@ export {
   pathReadFiles,
   validatePath,
   validateLinks,
+  statsUnique,
 };
