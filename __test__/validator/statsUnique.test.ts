@@ -9,8 +9,6 @@ describe("function statsUnique", () => {
           file: "file",
           href: "",
           text: "content",
-          status: 200,
-          OK: "OK",
         },
       ];
 
@@ -24,15 +22,11 @@ describe("function statsUnique", () => {
           file: "file",
           href: "https://example.com",
           text: "content",
-          status: 200,
-          OK: "OK",
         },
         {
           file: "file",
           href: "https://example.com",
           text: "content",
-          status: 200,
-          OK: "OK",
         },
       ];
 
