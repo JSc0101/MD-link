@@ -1,6 +1,6 @@
 import { existsSync, statSync, readdirSync, readFile } from "fs";
 import { isAbsolute, resolve, extname } from "path";
-import { LINK } from "./interfaces/objectLink";
+import { LINK, VALIDATE } from "./interfaces/objectLink";
 import { cwd } from "process";
 import axios from "axios";
 
@@ -139,6 +139,15 @@ const statsUnique = (objectArray: Array<LINK>) => {
   };
 };
 
+const brokenLinks = (arrayObjects: Array<VALIDATE>) => {
+  const linkBroken = arrayObjects.filter((objects) => objects.ok === "fail");
+  return {
+    totalFiles: arrayObjects.length,
+    totalUnique: statsUnique(arrayObjects).totalUnique,
+    broken: linkBroken.length,
+  };
+};
+
 export {
   pathnameExist,
   validatorAbsolute,
@@ -151,4 +160,5 @@ export {
   validatePath,
   validateLinks,
   statsUnique,
+  brokenLinks,
 };

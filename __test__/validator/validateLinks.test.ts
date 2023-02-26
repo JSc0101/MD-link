@@ -17,17 +17,15 @@ describe("function validate", () => {
         file: "",
         href: "https://i.postimg.cc/4NP5661b/450-1000.jpg",
         text: "content",
-        status: 200,
-        OK: "OK",
       };
       const arrayObject: Array<LINK> = [resolveObject];
       mockedAxios.get.mockResolvedValue({ status: 200, statusText: "OK" });
       validateLinks(arrayObject).then((result) => {
         expect(result).toBeInstanceOf(Array);
         result.forEach((element) => {
-          expect(element.OK).toBe('OK')
-          expect(element.status).not.toBe(404)
-        })
+          expect(element.OK).toBe("OK");
+          expect(element.status).not.toBe(404);
+        });
       });
     });
 
@@ -37,17 +35,16 @@ describe("function validate", () => {
           file: "file",
           href: "https://example.com",
           text: "content",
-          status: 404,
-          OK: "fail",
         },
       ];
 
-      mockedAxios.get.mockResolvedValueOnce(arrayObject[0]);
+      mockedAxios.get.mockResolvedValueOnce({ status: 404, statusText: "fail" });
 
       validateLinks(arrayObject).then((result) => {
         result.forEach((element) => {
-          expect(element.status).not.toBe(200)
-        })
+          expect(element.OK).toBe("fail");
+          expect(element.status).not.toBe(200);
+        });
       });
     });
   });
