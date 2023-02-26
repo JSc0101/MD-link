@@ -148,6 +148,15 @@ const brokenLinks = (arrayObjects: Array<VALIDATE>) => {
   };
 };
 
+const getAllmdFiles = (pathname: string) => {
+  if (pathnameExist(pathname)) {
+    validatorAbsolute(pathname);
+    converToAbsolute(pathname);
+  }
+  return getMdFiles(pathname);
+};
+
+
 export {
   pathnameExist,
   validatorAbsolute,
@@ -161,4 +170,5 @@ export {
   validateLinks,
   statsUnique,
   brokenLinks,
+  getAllmdFiles
 };
