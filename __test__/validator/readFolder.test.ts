@@ -4,7 +4,7 @@ import { readFiles } from "./pathname";
 describe("function readFolder", () => {
   describe("everything related to the readFolder function", () => {
     test("should return an array", () => {
-      expect(readFolder(readFiles)).toContain("markdown");
+      return expect(readFolder(readFiles)).toContain("markdown");
     });
   });
 });

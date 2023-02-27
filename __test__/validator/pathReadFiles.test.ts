@@ -21,7 +21,12 @@ describe("pathReadFiles", () => {
   });
 
   test("should reject with error when file does not exist", () => {
+    let errorMessagee = new Error(
+      "ENOENT: no such file or directory, open 'C:\\Users\\NICOLAS\\Desktop\\MD-Link\\nonExistentFile.txt'"
+    );
     const nonExistentFilePath = "./nonExistentFile.txt";
-    return expect(pathReadFiles(nonExistentFilePath)).rejects.toThrow();
+    return expect(pathReadFiles(nonExistentFilePath)).rejects.toThrowError(
+      errorMessagee
+    );
   });
 });

@@ -13,7 +13,7 @@ describe("function statsUnique", () => {
       ];
 
       const result = statsUnique(arrayObjects)
-      expect(result).toBeInstanceOf(Object)
+      return expect(result).toBeInstanceOf(Object)
     });
 
     test("should return the length", () => {
