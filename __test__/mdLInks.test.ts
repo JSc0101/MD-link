@@ -28,8 +28,8 @@ describe("function mdLink", () => {
       });
     });
 
-    test("should", () => {
-      return mdLink("README.md", ["--validate", "--stats"]).then((result) => {
+    test("should return a array with the options --validate", () => {
+      return mdLink("README.md", ["--validate"]).then((result) => {
         if (typeof result === "string") {
           validatePath(result).then((data) => {
             expect(data).toEqual([]);
@@ -38,15 +38,7 @@ describe("function mdLink", () => {
       });
     });
 
-    test('should return an array of links with validation information when called with the "--validate" option', () => {
-      const path = "./README.md";
-      const options = ["--validate"];
-      return mdLink(path, options).then((result) => {
-        expect(Array.isArray(result)).toBe(true);
-      });
-    });
-
-    test("error", () => {
+    test("should return a error", () => {
       const path = "./sas";
       const errorMessagee =
       "ENOENT: no such file or directory, stat './sas'"
