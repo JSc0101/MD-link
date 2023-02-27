@@ -21,8 +21,8 @@ export const mdLink = (path: string, options: Array<string>) => {
         const patnameArr = getAllmdFiles(path);
         patnameArr.forEach((elem) => {
           validatePath(elem).then((result) => {
-            if (result instanceof Array) {
-              resolve(brokenLinks(result));
+            if (Array.isArray(result)) {
+              return resolve(brokenLinks(result));
             }
           });
         });
@@ -31,10 +31,8 @@ export const mdLink = (path: string, options: Array<string>) => {
         pathnameArr.forEach((elem) => {
           validatePath(elem)
             .then((result) => {
-              if (result instanceof Array) {
-                validateLinks(result).then((result) => {
-                  return resolve(result);
-                });
+              if (Array.isArray(result)) {
+                validateLinks(result).then((result) => resolve(result));
               }
             })
             .catch((error) => reject(error));
@@ -43,7 +41,7 @@ export const mdLink = (path: string, options: Array<string>) => {
         const pathnameArr = getAllmdFiles(path);
         pathnameArr.forEach((elem) => {
           validatePath(elem).then((result) => {
-            if (result instanceof Array) {
+            if (Array.isArray(result)) {
               resolve(statsUnique(result));
             }
           });

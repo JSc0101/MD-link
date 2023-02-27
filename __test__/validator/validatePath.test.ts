@@ -1,6 +1,7 @@
 import { validatePath } from "../../validator";
 import { pathArrMd, arrFilemd } from "./pathname";
 
+
 describe("function validatePath", () => {
   describe("everything related to the validatePath function", () => {
     test("should return an array", () => {
@@ -11,7 +12,7 @@ describe("function validatePath", () => {
     });
 
     test("should an promise", () => {
-      validatePath(pathArrMd).then((data) => {
+      return validatePath(pathArrMd).then((data) => {
         expect(data instanceof Array).toBeTruthy();
       });
     });
