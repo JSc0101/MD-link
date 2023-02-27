@@ -10,7 +10,7 @@ describe("funcion getAllmdFiles", () => {
 
     test("should return paths", () => {
       const result = getAllmdFiles(pathArrMd);
-      result.forEach((path) => {
+      return result.forEach((path) => {
         expect(path).toBeDefined();
       });
     });

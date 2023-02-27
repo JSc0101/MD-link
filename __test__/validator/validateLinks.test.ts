@@ -20,7 +20,7 @@ describe("function validate", () => {
       };
       const arrayObject: Array<LINK> = [resolveObject];
       mockedAxios.get.mockResolvedValue({ status: 200, statusText: "OK" });
-      validateLinks(arrayObject).then((result) => {
+      return validateLinks(arrayObject).then((result) => {
         expect(result).toBeInstanceOf(Array);
         result.forEach((element) => {
           expect(element.OK).toBe("OK");
@@ -33,17 +33,20 @@ describe("function validate", () => {
       const arrayObject: Array<LINK> = [
         {
           file: "file",
-          href: "https://example.com",
+          href: "https://jestjs.io/sebastian",
           text: "content",
         },
       ];
 
-      mockedAxios.get.mockResolvedValueOnce({ status: 404, statusText: "fail" });
+      mockedAxios.get.mockRejectedValueOnce({
+        status: 404,
+        statusText: "fail",
+      });
 
-      validateLinks(arrayObject).then((result) => {
+      return validateLinks(arrayObject).then((result) => {
         result.forEach((element) => {
-          expect(element.OK).toBe("fail");
-          expect(element.status).not.toBe(200);
+          expect(element.status).toBe(404)
+          expect(element.statusText).toBe('fail')
         });
       });
     });

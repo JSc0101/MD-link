@@ -120,7 +120,7 @@ const validateLinks = (objectArray: Array<LINK>) => {
           const objectWithFiveprops = {
             ...object,
             status: res.status,
-            OK: res.statusText !== "OK" ? "fail" : res.statusText,
+            OK: res.statusText ? res.statusText : 'fail',
           };
           return objectWithFiveprops;
         })
