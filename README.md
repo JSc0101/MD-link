@@ -49,7 +49,7 @@ npx mdLinks <path-name-file.md>
 
 - obtendra informacion de todos los links encontrados en su archivo `.md`
 
-```
+```js
 [
   {
     file: "name of your file",
@@ -83,7 +83,7 @@ npx mdLinks <path-name-file.md> --validate
 
 - tendra el siguiente resultado:
 
-```
+```js
 
 [
   {
@@ -124,7 +124,7 @@ npx mdLinks <path-name-file.md> --stats
 
 - obtendras el siguiente resultado:
 
-```
+```js
 [
   {
     totalFiles: 00,
@@ -159,7 +159,7 @@ npx mdLinks <path-name-file.md> --validate --stats
 
 - obtendras el siguiente resultado:
 
-```
+```js
 [
   {
     totalFiles: 00,
@@ -182,4 +182,5 @@ npx mdLinks <path-name-file.md> --validate --stats
 
 ## Author
 
-- github: @Sebastian009w  , email: johancs.mm@gmailcom
+- @Sebastian009w
+- johancs.mm@gmailcom
