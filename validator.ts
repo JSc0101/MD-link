@@ -124,7 +124,14 @@ const validateLinks = (objectArray: Array<LINK>) => {
           };
           return objectWithFiveprops;
         })
-        .catch((error) => error)
+        .catch((error) => {
+        const responseError = {
+          ..object,
+          status: error.res ? 404 : 404,
+          OK: 'fail'
+        }
+        return responseError
+    })
     )
   );
 };
